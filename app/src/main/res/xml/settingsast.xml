@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <Preference
+            android:key="website"/>
+        <Preference
+            android:key="QQ"
+            android:title="QQ公众号"
+           />
+        <Preference
+            android:key="wechat"
+            android:title="微信公众号"
+         />
+    <PreferenceCategory android:title="软件信息">
+        <Preference
+            android:key="website"
+          />
+    </PreferenceCategory>
+</PreferenceScreen>
