@@ -43,8 +43,6 @@ public class CircleContent extends BmobObject implements MultiItemEntity{
 
     private List<CircleComment> commentList;
 
-
-
     public List<CircleComment> getCommentList() {
         return commentList;
     }

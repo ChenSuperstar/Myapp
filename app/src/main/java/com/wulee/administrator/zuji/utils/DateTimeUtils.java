@@ -451,6 +451,19 @@ public class DateTimeUtils {
 		}
 		return null;
 	}
+	/**
+	 * 将date转换成相应的日期
+	 */
+	public static String formatTime2(Date time) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			String date = sdf.format(time);
+			return date;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	/**
 	 * 解析时间字符串 eg: 2015-04-12

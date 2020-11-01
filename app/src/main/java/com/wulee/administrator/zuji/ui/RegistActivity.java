@@ -83,7 +83,12 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
                     Toast.makeText(this, "密码由6~16位数字和英文字母组成", Toast.LENGTH_SHORT).show();
                     return;
                 }
-              doRegist(name,mobile,pwd);
+
+              /* if(TextUtils.isEmpty(authCode)){
+                    Toast.makeText(this, "请输入验证码", Toast.LENGTH_SHORT).show();
+                    return;
+                }*/
+                doRegist(name ,mobile,pwd);
             break;
             case R.id.btn_pincode:
                 mobile  = mEtMobile.getText().toString().trim();
@@ -114,7 +119,17 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         piInfo.setUsername(mobile);
         piInfo.setPassword(pwd);
         piInfo.setName(name);
-
+       /* piInfo.signOrLogin(authCode, new SaveListener<PersonalInfo>() {
+            @Override
+            public void done(PersonalInfo user,BmobException e) {
+                if(e==null){
+                    Toast.makeText(RegistActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegistActivity.this,LoginActivity.class));
+                }else{
+                    toast("注册失败:" + e.getMessage());
+                }
+            }
+        });*/
         piInfo.signUp(new SaveListener<PersonInfo>() {
             @Override
             public void done(PersonInfo user,BmobException e) {

@@ -51,7 +51,7 @@ import com.wulee.administrator.zuji.ui.fragment.MainBaseFrag;
 import com.wulee.administrator.zuji.ui.fragment.NewsFragment;
 import com.wulee.administrator.zuji.ui.fragment.UserGroupFragment;
 import com.wulee.administrator.zuji.ui.fragment.ZujiFragment;
-import com.wulee.administrator.zuji.ui.pushmsg.PushMsgListActivity;
+/*import com.wulee.administrator.zuji.ui.pushmsg.PushMsgListActivity;*/
 import com.wulee.administrator.zuji.utils.AppUtils;
 import com.wulee.administrator.zuji.utils.ConfigKey;
 import com.wulee.administrator.zuji.utils.HolidayUtil;
@@ -141,12 +141,12 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
         }
 
         long interal = System.currentTimeMillis() - lastShowNoticeTime;
-       /* if(interal > Constant.SHOW_NOTICE_INTERVAL){
+        /*if(interal > Constant.SHOW_NOTICE_INTERVAL){
             startActivity(new Intent(this,NoticeActivity.class));
         }*/
 
         if(HolidayUtil.isHoliday(new Date())){
-            startActivity(new Intent(this,FallingViewActivity.class).putExtra(FallingViewActivity.CURR_HOLIDAYS,HolidayUtil.getCurrHolidays()));
+            /*startActivity(new Intent(this,FallingViewActivity.class).putExtra(FallingViewActivity.CURR_HOLIDAYS,HolidayUtil.getCurrHolidays()));*/
         }
     }
 
@@ -194,7 +194,7 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
     @Override
     protected void onStart() {
         super.onStart();
-       long lastCheckUpdateTime = 0L;
+        long lastCheckUpdateTime = 0L;
         try {
             String timeStr = aCache.getAsString(Constant.KEY_LAST_CHECK_UPDATE_TIME);
             if(!TextUtils.isEmpty(timeStr)){
@@ -206,7 +206,7 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
         long interal = System.currentTimeMillis() - lastCheckUpdateTime;
         if(interal > Constant.CHECK_UPDATE_INTERVAL){
             BmobUpdateAgent.setUpdateOnlyWifi(true);
-         /*   checkUpdate();*/
+            /*   checkUpdate();*/
             aCache.put(Constant.KEY_LAST_CHECK_UPDATE_TIME,String.valueOf(System.currentTimeMillis()));
         }
     }
@@ -245,11 +245,11 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
 
         //自定义menu菜单icon和title颜色
         int[][] states = new int[][]{
-                new int[]{ -android.R.attr.state_checked},
-                new int[]{android.R.attr.state_checked}
+            new int[]{ -android.R.attr.state_checked},
+            new int[]{android.R.attr.state_checked}
         };
         final int[] colors = new int[]{              ContextCompat.getColor(this,R.color.ctv_black_2),
-                ContextCompat.getColor(this,R.color.colorAccent)
+            ContextCompat.getColor(this,R.color.colorAccent)
         };
         ColorStateList csl = new ColorStateList(states, colors);
 
@@ -263,11 +263,11 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
         BitmapDrawable bd = (BitmapDrawable) drawable;
         Bitmap bm = bd.getBitmap();
         finalBitmap = EasyBlur.with(getApplicationContext())
-                .bitmap(bm) //要模糊的图片
-                .radius(50)//模糊半径
-                .scale(4)//指定模糊前缩小的倍数
-                .policy(EasyBlur.BlurPolicy.FAST_BLUR)//使用fastBlur
-                .blur();
+            .bitmap(bm) //要模糊的图片
+            .radius(50)//模糊半径
+            .scale(4)//指定模糊前缩小的倍数
+            .policy(EasyBlur.BlurPolicy.FAST_BLUR)//使用fastBlur
+            .blur();
         ivBg.setImageBitmap(finalBitmap);
 
         ivHeader = (ImageView) menuHeaderView.findViewById(R.id.circle_img_header);
@@ -275,8 +275,8 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
         mTvMobile = (TextView) menuHeaderView.findViewById(R.id.tv_mobile);
         mTvSign = (TextView) menuHeaderView.findViewById(R.id.tv_sign);
         mTvIntegral= (TextView) menuHeaderView.findViewById(R.id.tv_integral);
-   /* LinearLayout llmsg = (LinearLayout) navigationView.getMenu().findItem(R.id.item_msg_board).getActionView();
-       tvNewMsg = llmsg.findViewById(R.id.tv_new_msg);*/
+        LinearLayout llmsg = (LinearLayout) navigationView.getMenu().findItem(R.id.item_msg_board).getActionView();
+        tvNewMsg = llmsg.findViewById(R.id.tv_new_msg);
 
         final PersonInfo piInfo = BmobUser.getCurrentUser(PersonInfo.class);
         if(piInfo == null)
@@ -327,34 +327,34 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
                     signInfo.save(new SaveListener<String>() {
                         @Override
                         public void done(String s, BmobException e) {
-                           if(e == null){
+                            if(e == null){
 
-                               final int integral = piInfo.getIntegral();
-                               piInfo.setIntegral(integral+1);
-                               piInfo.update(new UpdateListener() {
-                                   @Override
-                                   public void done(BmobException e) {
-                                     if(e == null){
-                                         aCache.put(Constant.KEY_SIGN_DATE,date);
-                                         mTvSign.setTextColor(ContextCompat.getColor(MainNewActivity.this,R.color.baseGrayNor));
-                                         mTvSign.setText("已签到");
-                                         mTvSign.setEnabled(false);
+                                final int integral = piInfo.getIntegral();
+                                piInfo.setIntegral(integral+1);
+                                piInfo.update(new UpdateListener() {
+                                    @Override
+                                    public void done(BmobException e) {
+                                        if(e == null){
+                                            aCache.put(Constant.KEY_SIGN_DATE,date);
+                                            mTvSign.setTextColor(ContextCompat.getColor(MainNewActivity.this,R.color.baseGrayNor));
+                                            mTvSign.setText("已签到");
+                                            mTvSign.setEnabled(false);
 
-                                         mTvIntegral.setText(Integer.valueOf(integral+1)+"");
+                                            mTvIntegral.setText(Integer.valueOf(integral+1)+"");
 
-                                         toast("签到成功");
-                                     }else{
-                                         mTvSign.setEnabled(true);
+                                            toast("签到成功");
+                                        }else{
+                                            mTvSign.setEnabled(true);
 
-                                         toast("签到失败");
-                                     }
-                                   }
-                               });
+                                            toast("签到失败");
+                                        }
+                                    }
+                                });
 
-                           }else{
-                               toast("签到失败");
-                               mTvSign.setEnabled(true);
-                           }
+                            }else{
+                                toast("签到失败");
+                                mTvSign.setEnabled(true);
+                            }
                         }
                     });
                 }else{
@@ -427,9 +427,10 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
                 return (RadioButton) mRg.findViewById(R.id.rbnt_circle);
             case POS_THREE:
                 return (RadioButton) mRg.findViewById(R.id.rbnt_user_group);
-            case POS_FOUR:
+          /*  case POS_FOUR:
                 return (RadioButton) mRg.findViewById(R.id.rbnt_joke);
-
+            case POS_FIVE:
+                return (RadioButton) mRg.findViewById(R.id.rbnt_news);*/
         }
         return null;
     }
@@ -498,20 +499,20 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
                     mViewPager.setCurrentItem(POS_THREE, false);
                 }
                 break;
-            case R.id.rbnt_joke:
+           /* case R.id.rbnt_joke:
                 if (POS_FOUR != mViewPager.getCurrentItem()) {
                     mViewPager.setCurrentItem(POS_FOUR, false);
                 }
                 break;
-         /*   case R.id.rbnt_news:
+            case R.id.rbnt_news:
                 Intent intent=new Intent(MainNewActivity.this, MainActivity.class);
-                startActivity(intent);
-            *//*    Intent intent=new Intent(MainNewActivity.this, MainActivity.class);
-                startActivity(intent);*//*
-               *//* if (POS_FIVE != mViewPager.getCurrentItem()) {
+                startActivity(intent);*/
+            /*    Intent intent=new Intent(MainNewActivity.this, MainActivity.class);
+                startActivity(intent);*/
+               /* if (POS_FIVE != mViewPager.getCurrentItem()) {
                     mViewPager.setCurrentItem(POS_FIVE, false);
-                }*//*
-                break;*/
+                }*/
+              /*  break;*//**/
         }
     }
 
@@ -522,12 +523,12 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
             showLogoutDialog();
         }/*else  if (id ==  R.id.item_pushmsg) {
             startActivity(new Intent(this,PushMsgListActivity.class));
-        }else  if (id ==  R.id.item_msg_board) {
+        }*/else  if (id ==  R.id.item_msg_board) {
             PersonInfo personInfo = getCurrentUser(PersonInfo.class);
             if(personInfo != null){
                 startActivity(new Intent(this,MessageBoardActivity.class).putExtra("piInfo",personInfo));
             }
-        }else  if (id ==  R.id.item_checkupdate) {
+        }/*else  if (id ==  R.id.item_checkupdate) {
             BmobUpdateAgent.setUpdateListener((updateStatus, updateInfo) -> {
                 // TODO Auto-generated method stub
                 if (updateStatus == UpdateStatus.Yes) {//版本有更新
@@ -544,15 +545,15 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
                     Toast.makeText(MainNewActivity.this, "查询出错或查询超时", Toast.LENGTH_SHORT).show();
                 }
             });
-          *//*  checkUpdate();*//*
+            *//*  checkUpdate();*//*
         }else  if (id ==  R.id.item_feedback) {
             startActivity(new Intent(this,FeedBackActivity.class));
         }else  if (id ==  R.id.item_setting) {
             startActivity(new Intent(this,SettingActivity.class));
         }else  if (id ==  R.id.item_about) {
             startActivity(new Intent(this,AboutMeActivity.class));
-        }
-        mDrawerLayout.closeDrawer(GravityCompat.START);*/
+        }*/
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -594,8 +595,8 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
             Fragment retFragment = null;
             switch (position) {
                 case 0:
-                    retFragment = new CircleFragment();
-                    mainBaseFrags[0] = (CircleFragment) retFragment;
+                    retFragment = new ZujiFragment();
+                    mainBaseFrags[0] = (ZujiFragment) retFragment;
                     break;
                 case 1:
                     retFragment = new CircleFragment();
@@ -673,9 +674,9 @@ public class MainNewActivity extends BaseActivity implements RadioGroup.OnChecke
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
-                 case MSG_QUERY_MESSAGE_COUNT:
-                     queryMessageCount();
-                 break;
+                case MSG_QUERY_MESSAGE_COUNT:
+                    queryMessageCount();
+                    break;
             }
             super.handleMessage(msg);
         }

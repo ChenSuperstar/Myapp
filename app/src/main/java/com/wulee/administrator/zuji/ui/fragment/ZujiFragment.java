@@ -29,14 +29,14 @@ import com.wulee.administrator.zuji.database.bean.PersonInfo;
 import com.wulee.administrator.zuji.entity.BannerInfo;
 import com.wulee.administrator.zuji.service.ScreenService;
 import com.wulee.administrator.zuji.service.UploadLocationService;
-import com.wulee.administrator.zuji.ui.FunPicActivity;
+/*import com.wulee.administrator.zuji.ui.FunPicActivity;*/
 import com.wulee.administrator.zuji.ui.MapActivity;
-import com.wulee.administrator.zuji.ui.StepActivity;
+/*import com.wulee.administrator.zuji.ui.StepActivity;*/
 import com.wulee.administrator.zuji.ui.ZuJiMapActivity;
-import com.wulee.administrator.zuji.ui.weather.WeatherActivity;
+
 import com.wulee.administrator.zuji.utils.GlideImageLoader;
 import com.wulee.administrator.zuji.utils.LocationUtil;
-import com.wulee.administrator.zuji.utils.Pedometer;
+/*import com.wulee.administrator.zuji.utils.Pedometer;*/
 import com.wulee.administrator.zuji.widget.AnimArcButtons;
 import com.wulee.administrator.zuji.widget.BaseTitleLayout;
 import com.wulee.administrator.zuji.widget.TitleLayoutClickListener;
@@ -86,7 +86,7 @@ public class ZujiFragment extends MainBaseFrag{
 
     private AnimArcButtons menuBtns;
 
-    private Pedometer pedometer;
+ //   private Pedometer pedometer;
 
 
     @Nullable
@@ -147,8 +147,8 @@ public class ZujiFragment extends MainBaseFrag{
         IntentFilter filter  = new IntentFilter(LocationUtil.ACTION_LOCATION_CHANGE);
         mContext.registerReceiver(mReceiver,filter);
 
-        pedometer = new Pedometer(mContext);
-        pedometer.register();
+       /* pedometer = new Pedometer(mContext);
+        pedometer.register();*/
     }
 
     @Override
@@ -201,19 +201,19 @@ public class ZujiFragment extends MainBaseFrag{
         mAdapter.setOnLoadMoreListener(() -> getLocationList(curPage, STATE_MORE));
         menuBtns.setOnButtonClickListener((v, id) -> {
             switch (id){
-                case 0:
+                /*case 0:
                     startActivity(new Intent(mContext,WeatherActivity.class).putExtra("curr_time",currServerTime));
-                    break;
-                case 1:
+                    break;*/
+               /* case 1:
                     if (pedometer.hasStepSensor()) {
                         startActivity(new Intent(mContext, StepActivity.class));
                     } else {
                         Toast.makeText(mContext, "设备没有计步传感器", Toast.LENGTH_SHORT).show();
                     }
-                    break;
-                case 2:
+                    break;*/
+               /* case 2:
                     startActivity(new Intent(mContext,FunPicActivity.class));
-                    break;
+                    break;*/
             }
         });
     }
@@ -402,10 +402,10 @@ public class ZujiFragment extends MainBaseFrag{
             mContext.unregisterReceiver(mReceiver);
             mReceiver = null;
         }
-        if(pedometer!= null){
+       /* if(pedometer!= null){
             pedometer.unRegister();
             pedometer = null;
-        }
+        }*/
     }
 
     @Override

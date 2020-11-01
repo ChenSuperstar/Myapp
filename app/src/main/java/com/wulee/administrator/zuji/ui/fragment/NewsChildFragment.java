@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.wulee.administrator.zuji.R;
 import com.wulee.administrator.zuji.adapter.NewsAdapter;
-import com.wulee.administrator.zuji.base.ComWebActivity;
+
 import com.wulee.administrator.zuji.entity.NewsInfo;
 import com.wulee.administrator.zuji.utils.GsonUtil;
 
@@ -98,9 +98,9 @@ public class NewsChildFragment extends Fragment {
             List<NewsInfo.NewsEntity> newsList = mAdapter.getData();
             if(newsList != null && newsList.size()>0){
                 NewsInfo.NewsEntity news = newsList.get(position);
-                if(news != null){
+                /*if(news != null){
                     ComWebActivity.launch(getActivity(),news.getUrl(),news.getTitle(),R.color.colorAccent);
-                }
+                }*/
             }
         });
 

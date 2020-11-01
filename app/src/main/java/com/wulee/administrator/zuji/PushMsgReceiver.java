@@ -13,7 +13,7 @@ import android.text.TextUtils;
 import com.liangmayong.text2speech.Text2Speech;
 import com.wulee.administrator.zuji.database.DBHandler;
 import com.wulee.administrator.zuji.database.bean.PushMessage;
-import com.wulee.administrator.zuji.ui.pushmsg.PushMsgListActivity;
+/*import com.wulee.administrator.zuji.ui.pushmsg.PushMsgListActivity;*/
 import com.wulee.administrator.zuji.utils.GsonUtil;
 import com.wulee.administrator.zuji.utils.OtherUtil;
 
@@ -50,13 +50,15 @@ public class PushMsgReceiver extends BroadcastReceiver {
                             .setSmallIcon(R.mipmap.ic_launcher)
                             .setContentTitle("新消息")
                             .setContentText(pushMessage.getContent());
+            /*
             Intent resultIntent = new Intent(context, PushMsgListActivity.class);
-            PendingIntent resultPendingIntent = PendingIntent.getActivity(
+            */
+           /* PendingIntent resultPendingIntent = PendingIntent.getActivity(
                     context, 0 , resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             mBuilder.setContentIntent(resultPendingIntent);
             Notification notification = mBuilder.build();
 
-            mNotificationManager.notify(ID_PUSH_MSG, notification);
+            mNotificationManager.notify(ID_PUSH_MSG, notification);*/
 
             EventBus.getDefault().post(pushMessage);
         }else if(TextUtils.equals(action,ACTION_HIDE_PUSH_MSG_NOTIFICATION)){
