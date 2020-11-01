@@ -32,17 +32,16 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:visibility="gone"
                 android:id="@+id/rbnt_zuji"
                 style="@style/main_tabs_radiobtn"
                 android:drawableTop="@drawable/tab_zuji"
-                android:text="旅游路线" />
+                android:text="我的位置" />
 
             <RadioButton
                 android:id="@+id/rbnt_circle"
                 style="@style/main_tabs_radiobtn"
                 android:drawableTop="@drawable/tab_circle"
-                android:text="帖子" />
+                android:text="朋友圈" />
 
             <RadioButton
                 android:id="@+id/rbnt_user_group"
@@ -50,12 +49,6 @@
                 android:drawableTop="@drawable/tab_group"
                 android:text="用户群" />
 
-            <RadioButton
-                android:visibility="gone"
-                android:id="@+id/rbnt_joke"
-                style="@style/main_tabs_radiobtn"
-                android:drawableTop="@drawable/tab_joke"
-              />
 
         </RadioGroup>
     </LinearLayout>

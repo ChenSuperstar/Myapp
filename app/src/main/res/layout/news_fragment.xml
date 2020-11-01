@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="新闻"
+            android:text="课表"
             android:textColor="@color/color_white"
             android:textSize="18sp" />
 

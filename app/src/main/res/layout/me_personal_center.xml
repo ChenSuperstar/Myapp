@@ -192,13 +192,13 @@
             android:paddingRight="10dp">
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/birthday_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:text="生日"
                 android:textColor="@color/ctv_black_2"
                 android:textSize="@dimen/com_tv_size_middle" />
 

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/com_title_height"
         android:background="@color/colorAccent"
-        app:titleCenterText="留言板"
+        app:titleCenterText="私信"
         app:titleLeftImg="@mipmap/icon_back"
         app:titleLeftImgVisible="true"
         app:titleLeftText=""
@@ -40,7 +40,7 @@
                 android:background="@drawable/bg_button"
                 android:textColor="#fff"
                 android:textSize="18sp"
-                android:text="留言" />
+                android:text="私信" />
 
             <android.support.v4.widget.Space
                 android:layout_width="20dp"
@@ -53,7 +53,7 @@
                 android:layout_weight="1"
                 android:layout_toLeftOf="@id/btn_submit_message"
                 android:background="@drawable/bg_button"
-                android:text="录音留言"
+                android:text="录音"
                 android:textSize="18sp"
                 android:textColor="#ffffff"
                 android:padding="8dp" />

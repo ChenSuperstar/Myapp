@@ -255,7 +255,7 @@
         android:background="@drawable/bg_button"
         android:textColor="#fff"
         android:textSize="18sp"
-        android:text="留言" />
+        android:text="私信" />
 </RelativeLayout>
 
 

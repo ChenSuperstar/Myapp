@@ -81,6 +81,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/tv_sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,15 +103,15 @@
             android:orientation="horizontal">
 
             <TextView
-
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="次数："
+                android:text="积分："
                 android:textColor="@color/baseGrayNor"
                 android:textSize="14sp" />
 
             <TextView
-
+                android:visibility="gone"
                 android:id="@+id/tv_integral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
